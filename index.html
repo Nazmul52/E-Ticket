@@ -19,7 +19,7 @@
     <!-- Adding Font Awesome CSS Library End -->
 
     <!-- External CSS Link -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <!-- End External CSS Link -->
   </head>
   <body class="m-auto font-['Manrope']">
@@ -79,7 +79,8 @@
               </li>
             </ul>
           </div>
-          <a class="btn btn-ghost lg:text-3xl text-2xl font-bold !pl-0"
+          <a
+            class="btn btn-ghost hover:bg-transparent lg:text-3xl text-2xl font-bold !pl-0"
             >P-Ticket</a
           >
         </div>
@@ -142,40 +143,41 @@
             </div>
           </div>
         </div>
-      </section>
-      <section
-        class="w-[1173px] mx-auto absolute left-0 right-0 bottom-[10rem] mb-24"
-      >
-        <div class="flex flex-row justify-between px-[101px]">
-          <div
-            class="bg-[#FFFFFF] shadow-sm p-6 rounded-2xl border-b-[3px] border-b-[#1DD100] flex flex-row justify-between gap-4"
-          >
-            <img src="/images/people.png" />
-            <div>
-              <h1 class="text-2xl font-bold">500K+</h1>
-              <p class="text-[#03071299]">Registered users</p>
+        <!-- Counter Section Start-->
+        <div class="w-[1173px] mx-auto absolute left-0 right-0 -bottom-[4rem]">
+          <div class="flex flex-row justify-between px-[101px]">
+            <div
+              class="bg-[#FFFFFF] shadow-sm p-6 rounded-2xl border-b-[3px] border-b-[#1DD100] flex flex-row justify-between gap-4"
+            >
+              <img src="/images/people.png" />
+              <div>
+                <h1 class="text-2xl font-bold">500K+</h1>
+                <p class="text-[#03071299]">Registered users</p>
+              </div>
             </div>
-          </div>
-          <div
-            class="bg-[#FFFFFF] shadow-sm p-6 rounded-2xl border-b-[3px] border-b-[#1DD100] flex flex-row justify-between gap-4"
-          >
-            <img src="/images/ticket-cupon.png" />
-            <div>
-              <h1 class="text-2xl font-bold">1.7 lacks</h1>
-              <p class="text-[#03071299]">Tickets sold</p>
+            <div
+              class="bg-[#FFFFFF] shadow-sm p-6 rounded-2xl border-b-[3px] border-b-[#1DD100] flex flex-row justify-between gap-4"
+            >
+              <img src="/images/ticket-cupon.png" />
+              <div>
+                <h1 class="text-2xl font-bold">1.7 lacks</h1>
+                <p class="text-[#03071299]">Tickets sold</p>
+              </div>
             </div>
-          </div>
-          <div
-            class="bg-[#FFFFFF] shadow-sm p-6 rounded-2xl border-b-[3px] border-b-[#1DD100] flex flex-row justify-between gap-4"
-          >
-            <img src="/images/stoppage.png" />
-            <div>
-              <h1 class="text-2xl font-bold">80K+</h1>
-              <p class="text-[#03071299]">Rental partners</p>
+            <div
+              class="bg-[#FFFFFF] shadow-sm p-6 rounded-2xl border-b-[3px] border-b-[#1DD100] flex flex-row justify-between gap-4"
+            >
+              <img src="/images/stoppage.png" />
+              <div>
+                <h1 class="text-2xl font-bold">80K+</h1>
+                <p class="text-[#03071299]">Rental partners</p>
+              </div>
             </div>
           </div>
         </div>
+        <!-- Counter Section End -->
       </section>
+
       <!-- Hero Section End -->
       <!-- Offer Section Start -->
       <section class="my-16 mt-48 w-[1173px] mx-auto">
@@ -265,7 +267,8 @@
                     <a
                       class="btn bg-green-100 text-[#1DD100] border-lg px-6 py-[15px]"
                     >
-                      <img src="/images/bus-icon.png" /> 40 seats left</a
+                      <img src="/images/bus-icon.png" />
+                      <span id="remaining-seats">40 seats left</span></a
                     >
                   </div>
                 </div>
@@ -359,48 +362,69 @@
                       <!-- head -->
                       <thead class="text-[#030712]">
                         <tr>
-                          <th>Seat</th>
-                          <th>Class</th>
-                          <th>Price</th>
+                          <th class="text-[16px]">
+                            <div class="indicator">
+                              <span
+                                class="indicator-item badge badge-secondary border-0 bg-[#1DD100] left-[22px] rounded-[7px] px-[12px] py-[4px]"
+                                id="seat-count"
+                                >0</span
+                              >
+                              <span>Seat</span>
+                            </div>
+                          </th>
+                          <th class="text-[16px]">Class</th>
+                          <th class="text-[16px]">Price</th>
                         </tr>
                       </thead>
                       <tbody
                         class="text-[#03071299] border-b-2 border-[#03071233]"
-                      >
-                        <!-- row 1 -->
-                        <tr>
-                          <td>Cy Ganderton</td>
-                          <td>Quality</td>
-                          <td>Blue</td>
-                        </tr>
-                        <!-- row 2 -->
-                        <tr>
-                          <td>Hart</td>
-                          <td>Desktop</td>
-                          <td>Purple</td>
-                        </tr>
-                      </tbody>
+                        id="seat-table-body"
+                      ></tbody>
                     </table>
                     <div class="flex flex-row justify-between py-4">
                       <h1 class="font-bold text-xl">Total Price</h1>
                       <h1 class="font-bold text-xl">
-                        BDT <span class="total-price">1110</span>
+                        BDT <span class="total-price" id="total-price">0</span>
+                      </h1>
+                    </div>
+                    <div
+                      class="flex flex-row justify-between py-2 hidden"
+                      id="discount-amount-div"
+                    >
+                      <h1 class="font-bold">Discount Amount</h1>
+                      <h1 class="font-bold">
+                        BDT
+                        <span id="discount-amount">0</span>
                       </h1>
                     </div>
                     <div>
                       <label
-                        class="input input-bordered flex items-center rounded-2xl gap-2 py-8 border-0"
+                        class="input input-bordered flex items-center rounded-2xl gap-2 py-8 border-0 discount-label"
+                        id="coupon-input-button"
                       >
                         <input
                           type="text"
                           class="grow bg-[#FFFFFF] text-[#03071266]"
                           placeholder="Have any coupon?"
+                          id="coupon-input"
+                          readonly
                         />
-                        <span
+                        <button
                           class="badge bg-[#1DD100] rounded-2xl font-bold text-[18px] text-white px-8 py-6"
-                          >Apply</span
+                          onclick="applyCoupon()"
+                          id="apply-button"
+                          disabled
                         >
+                          Apply
+                        </button>
                       </label>
+                      <div class="flex flex-row justify-between py-4">
+                        <h1 class="font-bold text-xl">Grand Total</h1>
+                        <h1 class="font-bold text-xl">
+                          BDT
+                          <span class="grand-total" id="grand-total">0</span>
+                        </h1>
+                      </div>
                     </div>
                     <div
                       class="flex flex-row text-[#03071299] justify-between py-4 border-[#03071233]"
@@ -408,7 +432,7 @@
                   </div>
                   <div class="flex flex-col">
                     <div class="text-[#030712] mb-4">
-                      <p class="mb-2 text-xl font-bold">Passenger Name</p>
+                      <p class="mb-2 text-xl font-bold">Passenger Name*</p>
                       <label
                         class="input input-bordered flex items-center rounded-2xl gap-2 py-8"
                       >
@@ -416,20 +440,26 @@
                           type="text"
                           class="grow bg-[#FFFFFF] text-[#03071266]"
                           placeholder="Enter your name"
+                          id="passengerName"
                         />
                       </label>
                     </div>
                     <div class="text-[#030712] mb-4">
-                      <p class="mb-2 text-xl font-bold">Passenger Number</p>
+                      <p class="mb-2 text-xl font-bold">Passenger Number*</p>
                       <label
                         class="input input-bordered flex items-center rounded-2xl gap-2 py-8"
                       >
                         <input
-                          type="text"
+                          type="number"
                           class="grow bg-[#FFFFFF] text-[#03071266]"
                           placeholder="Enter your phone number"
+                          id="passengerNumber"
                         />
                       </label>
+                      <p
+                        id="phoneError"
+                        class="text-red-500 text-sm ml-2 mt-2"
+                      ></p>
                     </div>
                     <div class="text-[#030712] mb-4">
                       <p class="mb-2 text-xl font-bold">Email ID</p>
@@ -440,12 +470,16 @@
                           type="text"
                           class="grow bg-[#FFFFFF] text-[#03071266]"
                           placeholder="Enter your email id"
+                          id="emailId"
                         />
                       </label>
                     </div>
                     <div class="text-[#030712] mb-4">
                       <button
                         class="btn w-full bg-[#1DD100] rounded-2xl text-white h-16 font-bold text-2xl hover:bg-[#1DD100]"
+                        id="nextButton"
+                        disabled
+                        onclick="successModal.showModal()"
                       >
                         NEXT
                       </button>
@@ -453,7 +487,7 @@
                     <div
                       class="px-4 flex flex-row justify-center text-[#03071299] gap-8"
                     >
-                      <h1 class="underline">Terns and Conditions</h1>
+                      <h1 class="underline">Terms and Conditions</h1>
                       <h1 class="underline">Cancellation Policy</h1>
                     </div>
                   </div>
@@ -465,6 +499,11 @@
       </section>
       <!-- Ticket Section End -->
       <!--  -->
+      <div class="toast toast-end hidden" id="toast-end">
+        <div class="alert alert-error text-white font-bold text-3xl" id="alert">
+          <span id="toast-message"></span>
+        </div>
+      </div>
     </main>
     <!-- Main End -->
     <!-- Footer Start -->
@@ -505,20 +544,52 @@
       </div>
     </footer>
     <!-- Footer End -->
+
+    <!-- Modal -->
+    <dialog class="modal" id="successModal">
+      <div class="modal-box">
+        <span
+          class="close flex justify-end text-3xl cursor-pointer"
+          onclick="closeModal()"
+          >&times;</span
+        >
+        <div class="modal-header grid justify-items-center px-8">
+          <!-- <div class="check-mark text-3xl mb-4"></div> -->
+          <div class="sucess_check-mark">
+            <div class="check-mark"></div>
+          </div>
+          <h2 class="text-2xl text-[#27AE60] font-bold mt-4">Success</h2>
+        </div>
+        <div class="modal-body text-center px-8">
+          <p class="text-[#4A4A4A] mb-2 font-bold">
+            Thank you for Booking Our Bus Seats. We are working hard to find the
+            best service and deals for you.
+          </p>
+          <p>Shortly you will find a confirmation in your email.</p>
+        </div>
+        <div class="modal-action justify-center">
+          <button
+            class="btn w-[70%] bg-[#27AE60] rounded-3xl text-white h-12 font-bold text-2xl hover:bg-[#1DD100]"
+            onclick="continueBooking()"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    </dialog>
     <script>
-      // Generate buttons with labels for rows A-J and 4 buttons per column
-      for (
-        let labelCode = "A".charCodeAt(0);
-        labelCode <= "J".charCodeAt(0);
-        labelCode++
-      ) {
-        const label = String.fromCharCode(labelCode);
-        createButtonsWithLabel(label);
-      }
+      let selectedSeats = 0;
+      let totalPrice = 0;
+      let remainingSeats = 40;
+      let couponApplied = false;
 
       // Function to create and append buttons to the container
       function createButtonsWithLabel(label, totalButtons = 4) {
         const container = document.getElementById("seat-div");
+        const tableBody = document.getElementById("seat-table-body");
+        const totalPriceElement = document.getElementById("total-price");
+        const grandTotalElement = document.getElementById("grand-total");
+        const seatCount = document.getElementById("seat-count");
 
         // Create label
         const labelElement = document.createElement("label");
@@ -549,6 +620,51 @@
             button.style.marginRight = "48px";
           }
 
+          // Add click event listener to each button
+          button.addEventListener("click", function () {
+            // Check if the button is already selected
+            if (button.style.backgroundColor === "rgb(29, 209, 0)") {
+              if (couponApplied)
+                return showAlert(
+                  "Coupon code is already applied. You can't change this now."
+                );
+
+              // Deselect the button
+              button.style.backgroundColor = "#F7F8F8";
+              button.style.color = "#03071280";
+              selectedSeats--;
+              seatCount.textContent = selectedSeats;
+              // Remove the seat from the table
+              removeSeatFromTable(button.textContent);
+              if (selectedSeats < 4) {
+                document.getElementById("coupon-input").readOnly = true;
+                document.getElementById("apply-button").disabled = true;
+                document.getElementById("coupon-input").value = "";
+              }
+            } else {
+              // Check if maximum seats are selected
+              if (selectedSeats < 4) {
+                // Select the button
+                button.style.backgroundColor = "#1DD100";
+                button.style.color = "#FFFFFF";
+
+                selectedSeats++;
+                seatCount.textContent = selectedSeats;
+
+                // Add the seat to the table
+                addSeatToTable(button.textContent, selectedSeats);
+                // Check if maximum seats are selected to enable coupon input and button
+                if (selectedSeats === 4) {
+                  document.getElementById("coupon-input").readOnly = false;
+                  document.getElementById("apply-button").disabled = false;
+                }
+              } else {
+                // Alert if attempting to select more than 4 seats
+                showAlert("You can only select 4 seats at a time.");
+              }
+            }
+          });
+
           container.appendChild(button);
         }
 
@@ -556,6 +672,265 @@
         const spacingElement = document.createElement("div");
         spacingElement.style.marginBottom = "10px"; // You can adjust the spacing as needed
         container.appendChild(spacingElement);
+        console.log(selectedSeats, "seats");
+      }
+
+      // Function to add seat to the table
+      function addSeatToTable(seat, selectedSeats) {
+        updateNextButtonStatus();
+
+        const tableBody = document.getElementById("seat-table-body");
+        const totalPriceElement = document.getElementById("total-price");
+
+        const row = document.createElement("tr");
+        const seatCell = document.createElement("td");
+        const classCell = document.createElement("td");
+        const priceCell = document.createElement("td");
+
+        seatCell.textContent = seat;
+        classCell.textContent = "Economy"; // You can set the class as needed
+        priceCell.textContent = "550"; // You can set the price as needed
+
+        row.appendChild(seatCell);
+        row.appendChild(classCell);
+        row.appendChild(priceCell);
+
+        tableBody.appendChild(row);
+
+        // Update total price
+        totalPrice = selectedSeats * 550;
+        totalPriceElement.textContent = totalPrice;
+
+        // Update grand total
+        updateGrandTotal();
+
+        // Update total seats count
+        remainingSeats = 40 - selectedSeats; // Assuming you start with 40 seats
+        updateRemainingSeats();
+      }
+
+      // Function to remove seat from the table
+      function removeSeatFromTable(seat) {
+        updateNextButtonStatus();
+        const tableBody = document.getElementById("seat-table-body");
+        const totalPriceElement = document.getElementById("total-price");
+        const rows = tableBody.getElementsByTagName("tr");
+        for (let i = 0; i < rows.length; i++) {
+          const cells = rows[i].getElementsByTagName("td");
+          if (cells.length > 0 && cells[0].textContent === seat) {
+            tableBody.removeChild(rows[i]);
+            break;
+          }
+        }
+
+        // Update total price
+        totalPrice -= 550;
+        totalPriceElement.textContent = totalPrice;
+
+        // Update grand total
+        updateGrandTotal();
+
+        // Update total seats count
+        remainingSeats = 40 - selectedSeats; // Assuming you start with 40 seats
+        updateRemainingSeats();
+      }
+
+      // Function to update the grand total based on the coupon code
+      function updateGrandTotal() {
+        const couponInput = document.getElementById("coupon-input");
+        const grandTotalElement = document.getElementById("grand-total");
+        let grandTotal = totalPrice;
+
+        // Apply coupon discounts if applicable
+        const couponCode = couponInput.value.trim().toUpperCase();
+        if (couponCode === "NEW15") {
+          grandTotal *= 0.85; // Apply 15% discount
+        } else if (couponCode === "COUPLE20") {
+          grandTotal *= 0.8; // Apply 20% discount
+        }
+
+        grandTotalElement.textContent = grandTotal;
+      }
+
+      // Generate buttons with labels for rows A-J and 4 buttons per column
+      for (
+        let labelCode = "A".charCodeAt(0);
+        labelCode <= "J".charCodeAt(0);
+        labelCode++
+      ) {
+        const label = String.fromCharCode(labelCode);
+        createButtonsWithLabel(label);
+      }
+
+      // Function to apply coupon and update grand total
+      function applyCoupon() {
+        const couponButtonInput = document.getElementById(
+          "coupon-input-button"
+        );
+        const couponInput = document.getElementById("coupon-input");
+        const grandTotalElement = document.getElementById("grand-total");
+        const discountAmountDiv = document.getElementById(
+          "discount-amount-div"
+        );
+        const discountAmount = document.getElementById("discount-amount");
+
+        let grandTotal = totalPrice;
+
+        // Apply coupon discounts if applicable
+        const couponCode = couponInput.value;
+        if (couponCode === "NEW15") {
+          grandTotal *= 0.85; // Apply 15% discount
+          couponApplied = true;
+          // Disable coupon input and button after applying coupon
+          couponInput.readOnly = true;
+          document.getElementById("apply-button").disabled = true;
+          couponButtonInput.style.display = "none";
+          discountAmountDiv.style.display = "flex";
+
+          const discountAmountCalculate = (totalPrice * 15) / 100;
+          discountAmount.textContent = Math.floor(discountAmountCalculate);
+          showAlert("Successfully Applied Coupon!", "success");
+        } else if (couponCode === "Couple 20") {
+          grandTotal *= 0.8; // Apply 20% discount
+          couponApplied = true;
+          // Disable coupon input and button after applying coupon
+          couponInput.readOnly = true;
+          document.getElementById("apply-button").disabled = true;
+          couponButtonInput.style.display = "none";
+
+          couponButtonInput.style.display = "none";
+          discountAmountDiv.style.display = "flex";
+
+          const discountAmountCalculate = (totalPrice * 20) / 100;
+          discountAmount.textContent = Math.floor(discountAmountCalculate);
+          showAlert("Successfully Applied Coupon!", "success");
+        } else {
+          // Invalid coupon code
+          showAlert("Invalid coupon code. Please enter a valid coupon code.");
+          return;
+        }
+
+        grandTotalElement.textContent = grandTotal;
+      }
+
+      // Update Remaining Seats
+      function updateRemainingSeats() {
+        const remainingSeatsElement =
+          document.getElementById("remaining-seats");
+        // remainingSeats--;
+
+        // Update the display
+        remainingSeatsElement.textContent = `${remainingSeats} seats left`;
+
+        // Disable the apply button when all seats are selected
+        if (remainingSeats === 0) {
+          document.getElementById("apply-button").disabled = true;
+        }
+      }
+
+      // Get references to the input fields, the NEXT button, and the error message
+      const passengerNameInput = document.getElementById("passengerName");
+      const passengerNumberInput = document.getElementById("passengerNumber");
+      const emailIdInput = document.getElementById("emailId");
+      const nextButton = document.getElementById("nextButton");
+      const phoneError = document.getElementById("phoneError");
+
+      // Add input event listeners to the required fields
+      passengerNameInput.addEventListener("input", handleInputChange);
+      passengerNumberInput.addEventListener("input", handleInputChange);
+
+      // Function to handle input changes
+      function handleInputChange() {
+        // Check if both required fields have values
+        const isPassengerNameValid = passengerNameInput.value.trim() !== "";
+        const isPassengerNumberValid = /^\d{11}$/.test(
+          passengerNumberInput.value.trim()
+        ); // 11-digit number
+
+        // Display error message for invalid phone number
+        if (passengerNumberInput.value.trim().length > 11) {
+          phoneError.textContent = "Phone number must be 11 digits";
+        } else {
+          phoneError.textContent = "";
+        }
+
+        // Enable or disable the NEXT button based on the validation
+        nextButton.disabled = !(isPassengerNameValid && isPassengerNumberValid);
+      }
+
+      // Function to update the Next button status based on seat selection
+      function updateNextButtonStatus() {
+        const isPassengerNameValid = passengerNameInput.value.trim() !== "";
+        const isPassengerNumberValid = /^\d{11}$/.test(
+          passengerNumberInput.value.trim()
+        );
+        const isSeatSelected = selectedSeats > 0;
+
+        nextButton.disabled = !(
+          isPassengerNameValid &&
+          isPassengerNumberValid &&
+          isSeatSelected
+        );
+      }
+
+      // Add event listeners to passenger name and number inputs for real-time validation
+      passengerNameInput.addEventListener("input", updateNextButtonStatus);
+      passengerNumberInput.addEventListener("input", updateNextButtonStatus);
+
+      // Get references to the modal and Next button
+      const modal = document.getElementById("successModal");
+      // const nextModalButton = document.getElementById("nextButton");
+
+      // Function to open the modal
+      function openModal() {
+        modal.style.display = "flex justify-center";
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        modal.style.display = "none";
+        location.reload(); // Reload the page
+      }
+
+      // Function to continue booking
+      function continueBooking() {
+        // Add your logic for continuing the booking process here
+        closeModal(); // Close the modal after continuing
+        location.reload(); // Reload the page
+      }
+
+      // Event listener for the Next button
+      nextButton.addEventListener("click", function () {
+        const isPassengerNameValid = passengerNameInput.value.trim() !== "";
+        const isPassengerNumberValid = /^\d{11}$/.test(
+          passengerNumberInput.value.trim()
+        );
+
+        if (isPassengerNameValid && isPassengerNumberValid) {
+          openModal(); // Open the modal if the required fields are valid
+        }
+      });
+
+      function showAlert(message, toastType = "") {
+        var toastEnd = document.getElementById("toast-end");
+        const alert = document.getElementById("alert");
+
+        // Remove both classes initially
+        alert.classList.remove("alert-error", "alert-success");
+
+        // Add the appropriate class based on toastType
+        if (toastType === "success") {
+          alert.classList.add("alert-success");
+        } else {
+          alert.classList.add("alert-error");
+        }
+
+        toastEnd.classList.remove("hidden");
+        document.getElementById("toast-message").textContent = message;
+
+        setTimeout(function () {
+          toastEnd.classList.add("hidden");
+        }, 3000); // 3000 milliseconds (3 seconds)
       }
     </script>
   </body>
