@@ -1,36 +1,4 @@
-/* Add this to your existing CSS or create a new style block in your HTML file */
-
-/* Add any additional styles you need for your modal */
-/* .check-mark { */
-/* position: relative;
-  width: 80px; 
-  height: 80px;
-  border: 2px solid transparent;
-  border-radius: 50%; 
-  overflow: hidden; 
-} */
-
-/* .check-mark::before {
-  content: "\2713";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem; 
-  color: #27ae60; 
-  clip-path: polygon(
-    50% 0%,
-    0% 100%,
-    100% 100%
-  ); 
-} */
-
-/* On hover, change the border color */
-/* .check-mark {
-  border-color: #27ae60;
-} */
-
-.sucess_check-mark {
+.success_check-mark {
   height: 100px;
   width: 100px;
   text-align: center;
@@ -76,5 +44,38 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .top-section {
+    width: 100%;
+  }
+  .w-full {
+    padding: 0 10px;
+  }
+}
+
+/* Footer Mobile Styles*/
+@media (max-width: 767px) {
+  footer {
+    padding: 16px; /* Adjust padding for mobile */
+  }
+  footer > .flex-row {
+    flex-direction: column !important; /* Stack items vertically for mobile */
+    width: 100%;
+    text-align: center; /* Center text for mobile */
+    margin-top: 16px;
+  }
+  footer > .text-right {
+    text-align: center; /* Center text for mobile */
+  }
+
+  footer > .border-b-2 {
+    border-bottom: none; /* Remove border for mobile */
+  }
+  footer > .mt-8 {
+    margin-top: 16px; /* Adjust margin for mobile */
   }
 }
