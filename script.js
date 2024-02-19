@@ -272,7 +272,7 @@ function handleInputChange() {
   }
 
   // Enable or disable the NEXT button based on the validation
-  nextButton.disabled = !(isPassengerNameValid && isPassengerNumberValid);
+  nextButton.disabled = !isPassengerNumberValid;
 }
 
 // Function to update the Next button status based on seat selection
@@ -283,11 +283,7 @@ function updateNextButtonStatus() {
   );
   const isSeatSelected = selectedSeats > 0;
 
-  nextButton.disabled = !(
-    isPassengerNameValid &&
-    isPassengerNumberValid &&
-    isSeatSelected
-  );
+  nextButton.disabled = !(isPassengerNumberValid && isSeatSelected);
 }
 
 // Add event listeners to passenger name and number inputs for real-time validation
